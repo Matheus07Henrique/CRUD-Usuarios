@@ -4,6 +4,15 @@ import UserModel from "../src/models/user.model.js";
 const app = express();
 app.use(express.json());
 
+// middlewares
+app.use((req, res, next) => {
+    console.log(`Request Type: ${req.method}`);
+    console.log(`Content Type: ${req.headers['content-type']}`);
+    console.log(`Date: ${new date()}`);
+
+    next();
+});
+
 // listar usuários
 app.get("/users", async (req, res) => {
   try {
